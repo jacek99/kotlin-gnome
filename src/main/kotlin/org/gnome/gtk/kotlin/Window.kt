@@ -4,12 +4,6 @@ import org.gnome.gdk.Event
 import org.gnome.gtk.Widget
 import org.gnome.gtk.Window
 
-fun Window(title: String = ""): Window {
-    val w = Window()
-    w.setTitle(title)
-    return w
-}
-
 fun Window.onDeleteEvent(lambda: (widget: Widget, event: Event) -> Boolean): Window {
     this.connect(Window.DeleteEvent { widget, event -> lambda.invoke(widget, event)})
     return this
@@ -20,8 +14,6 @@ var Window.title: String
     set(value: String) {
         setTitle(value)
     }
-
-
 
 
 // builder

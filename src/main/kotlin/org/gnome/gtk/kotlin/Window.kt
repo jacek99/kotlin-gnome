@@ -4,11 +4,10 @@ import org.gnome.gdk.Event
 import org.gnome.gtk.Widget
 import org.gnome.gtk.Window
 
-/**
- * Wrapper around Window to simulate extension constructor
- */
-fun Window(title: String = ""): Window = Window().apply {
-    setTitle(title)
+fun Window(title: String = ""): Window {
+    val w = Window()
+    w.setTitle(title)
+    return w
 }
 
 fun Window.onDeleteEvent(lambda: (widget: Widget, event: Event) -> Boolean): Window {
@@ -16,3 +15,20 @@ fun Window.onDeleteEvent(lambda: (widget: Widget, event: Event) -> Boolean): Win
     return this
 }
 
+var Window.title: String
+    get() = ""
+    set(value: String) {
+        setTitle(value)
+    }
+
+
+
+
+// builder
+fun window(title: String = "", init: Window.() -> Unit): Window {
+    val w = Window()
+    w.init()
+    w.title = title
+    return w
+
+}

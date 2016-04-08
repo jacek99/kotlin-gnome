@@ -2,6 +2,7 @@
 
 # build system files
 .gradle/
+build/
 
 # IDE files
 .idea/

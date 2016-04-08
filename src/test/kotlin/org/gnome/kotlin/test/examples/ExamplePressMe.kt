@@ -8,7 +8,8 @@ import org.gnome.gtk.kotlin.*
  * initializing GTK, packing Widgets into Containers, and hooking up signals.
  */
 fun main(args : Array<String>) {
-    runGtk(args, {
+
+    Application("Hello World").run(args, {
 
         window("Hello World") {
             onDeleteEvent { widget, event -> Gtk.mainQuit(); false }
@@ -23,5 +24,6 @@ fun main(args : Array<String>) {
             showAll()
         }
     })
+
 }
 

@@ -20,8 +20,6 @@ fun main(args : Array<String>) {
                     onClicked { b -> println("I was clicked: ${b.label}") }
                 }
             }
-
-            showAll()
         }
     })
 

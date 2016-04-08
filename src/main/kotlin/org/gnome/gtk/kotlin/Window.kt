@@ -21,6 +21,10 @@ fun window(title: String = "", init: Window.() -> Unit): Window {
     val w = Window()
     w.init()
     w.title = title
+
+
+    // show all contents automatically
+    w.showAll()
     return w
 
 }

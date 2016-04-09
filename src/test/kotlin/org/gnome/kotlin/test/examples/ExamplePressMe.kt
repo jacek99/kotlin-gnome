@@ -1,6 +1,5 @@
 package org.gnome.kotlin.test.examples
 
-import org.gnome.gtk.Gtk
 import org.gnome.gtk.kotlin.*
 
 /**
@@ -9,11 +8,8 @@ import org.gnome.gtk.kotlin.*
  */
 fun main(args : Array<String>) {
 
-    Application("Hello World").run(args, {
-
-        window("Hello World") {
-            onDeleteEvent { widget, event -> Gtk.mainQuit(); false }
-
+    application(args, "Kotlin.ExamplePressMe") {
+        window("Hello World", gtkMainQuit = true) {
             vbox(false,3) {
                 label("Go ahead:\nMake my day") {}
                 button("Press me!") {
@@ -21,7 +17,7 @@ fun main(args : Array<String>) {
                 }
             }
         }
-    })
+    }
 
 }
 

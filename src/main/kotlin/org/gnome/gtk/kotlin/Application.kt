@@ -1,26 +1,24 @@
 package org.gnome.gtk.kotlin
 
-import org.gnome.glib.Glib
+import org.gnome.glib.ApplicationFlags
+import org.gnome.gtk.Application
 import org.gnome.gtk.Gtk
 
 /**
- * Wrapper representing the entire app
+ * Main builder entry method
+ *
+ * @author Jacek Furmankiewicz
+ * @param args Application main() arguments
+ * @param id Application ID, must contain "."
+ * @param flags Application flags, default NONE
  */
-class Application(programName: String) {
+fun application(args: Array<String>, id: String, flags: ApplicationFlags = ApplicationFlags.NONE, init: Application.() -> Unit): Application {
+    Gtk.init(args)
 
-    init {
-        // Glib good practice
-        Glib.setProgramName(programName)
-    }
+    val x = Application(id,flags)
+    x.init()
 
-    /**
-     * Entry point for the application
-     */
-    fun run(args: Array<String>, code: () -> Unit): Application {
-        Gtk.init(args)
-        code.invoke()
-        Gtk.main()
-        return this
-    }
+    Gtk.main()
 
+    return x
 }

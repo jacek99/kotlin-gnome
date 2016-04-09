@@ -1,9 +1,6 @@
 package org.gnome.gtk.kotlin
 
-import org.gnome.gtk.Button
-import org.gnome.gtk.Container
-import org.gnome.gtk.Label
-import org.gnome.gtk.VBox
+import org.gnome.gtk.*
 
 fun Container.button(text: String, init: Button.() -> Unit): Button {
     val x = Button(text)
@@ -14,6 +11,13 @@ fun Container.button(text: String, init: Button.() -> Unit): Button {
 
 fun Container.label(text: String, init: Label.() -> Unit) : Label {
     val x = Label(text)
+    x.init()
+    this.add(x)
+    return x
+}
+
+fun Container.treeView(init: TreeView.() -> Unit): TreeView {
+    val x = TreeView()
     x.init()
     this.add(x)
     return x

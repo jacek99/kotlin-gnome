@@ -27,7 +27,6 @@ fun main(args: Array<String>) {
                 val store = ListStore(arrayOf(placeName,trailHead,elevationFormatted,elevationSort,accessibleByTrain))
                 model = store
 
-
                 var row = store.appendRow();
                 model.setValue(row, placeName, "Blue Mountains national park\n<small>(Six Foot Track)</small>");
                 model.setValue(row, trailHead, "Katoomba, NSW, Australia");
